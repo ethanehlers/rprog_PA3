@@ -5,22 +5,21 @@ best <- function(state, outcome)
   out_col <- NULL
   if(outcome == "heart attack")
   {
-    out_col <- c(11)
+    out_col <<- c(11)
   }
-  if(outcome == "heart failure")
+  else if(outcome == "heart failure")
   {
-    out_col <- c(17)
+    out_col <<- c(17)
   }
-  if(outcome == "pneumonia")
+  else if(outcome == "pneumonia")
   {
-    out_col <- c(23)
+    out_col <<- c(23)
   }
-  else
+  else 
   {
     stop("invalid outcome")
   }
-  
-  statedata <- subset(outcome, 7 == state, c(2,out_col))
+  statedata <- subset(outcome, "State" == state, c(2,out_col))
   
   return(thebest)
 }
