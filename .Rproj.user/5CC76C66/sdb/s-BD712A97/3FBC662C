@@ -1,0 +1,17 @@
+{
+    "contents" : "best <- function(state, outcome) \n{\n  originaldata <- read.csv(\"outcome-of-care-measures.csv\")\n  thebest <- NULL\n  out_col <- NULL\n  if(outcome == \"heart attack\")\n  {\n    out_col <- c(11)\n  }\n  if(outcome == \"heart failure\")\n  {\n    out_col <- c(17)\n  }\n  if(outcome == \"pneumonia\")\n  {\n    out_col <- c(23)\n  }\n  else\n  {\n    stop(\"invalid outcome\")\n  }\n  \n  statedata <- subset(outcome, 7 == state, c(2,out_col))\n  \n  return(thebest)\n}",
+    "created" : 1414086835409.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1787929363",
+    "id" : "3FBC662C",
+    "lastKnownWriteTime" : 1414091817,
+    "path" : "~/R Working Directory Master/rprog_PA3/best.R",
+    "project_path" : "best.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : true,
+    "type" : "r_source"
+}
