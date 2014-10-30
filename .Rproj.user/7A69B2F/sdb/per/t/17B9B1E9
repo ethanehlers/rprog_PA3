@@ -1,12 +1,12 @@
 {
-    "contents" : "best <- function(state, outcome) \n{\n  originaldata <- read.csv(\"outcome-of-care-measures.csv\")\n  thebest <- NULL\n  col_array <- c(\"heart attack\" = 11, \"heart failure\" = 17, \"pneumonia\" = 23)\n  if(!is.element(outcome, c(\"heart attack\", \"heart failure\", \"pneumonia\")))\n  {\n    stop(\"invalid outcome\") \n  } \n  if(!is.element(state, originaldata$State))\n  {\n    stop(\"invalid state\")\n  }\n  out_col <- col_array[outcome]\n  statedata <- subset(originaldata, State == state, c(2,out_col))\n  \n  thebest <- statedata[order(statedata[,3], statedata[,2], na.last = NA),]\n  return(thebest)\n}",
+    "contents" : "best <- function(state, outcome) \n{\n  originaldata <- read.csv(\"outcome-of-care-measures.csv\")\n  thebest <- NULL\n  col_array <- c(\"heart attack\" = 11, \"heart failure\" = 17, \"pneumonia\" = 23)\n  if(!is.element(outcome, c(\"heart attack\", \"heart failure\", \"pneumonia\")))\n  {\n    stop(\"invalid outcome\") \n  } \n  if(!is.element(state, originaldata$State))\n  {\n    stop(\"invalid state\")\n  }\n  out_col <- col_array[outcome]\n  statedata <- subset(originaldata, State == state, c(2,out_col))\n  colnames(statedata) <- c(\"Name\", \"Score\")\n  attach(statedata)\n  as.integer(statedata$Score)\n  thebest <- statedata[order(Score),]\n  return(thebest[1,1])\n}",
     "created" : 1414619976785.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3151133549",
+    "hash" : "1672044968",
     "id" : "17B9B1E9",
-    "lastKnownWriteTime" : 1414627944,
+    "lastKnownWriteTime" : 1414712048,
     "path" : "~/RWorkingDirectory/rprog_PA3/best.R",
     "project_path" : "best.R",
     "properties" : {

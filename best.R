@@ -13,7 +13,9 @@ best <- function(state, outcome)
   }
   out_col <- col_array[outcome]
   statedata <- subset(originaldata, State == state, c(2,out_col))
-  
-  thebest <- statedata[order(statedata[,3], statedata[,2], na.last = NA),]
-  return(thebest)
+  colnames(statedata) <- c("Name", "Score")
+  attach(statedata)
+  as.integer(statedata$Score)
+  thebest <- statedata[order(Score),]
+  return(thebest[1,1])
 }
