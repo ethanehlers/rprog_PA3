@@ -1,0 +1,17 @@
+{
+    "contents" : "rankhospital <- function(state, outcome, num) \n{\n  originaldata <- read.csv(\"outcome-of-care-measures.csv\", na.strings = \"Not Available\")\n  theone <- NULL\n  st_data <- NULL\n  col_array <- c(\"heart attack\" = 11, \"heart failure\" = 17, \"pneumonia\" = 23)\n  if(!is.element(outcome, c(\"heart attack\", \"heart failure\", \"pneumonia\")))\n  {\n    stop(\"invalid outcome\") \n  } \n  if(!is.element(state, originaldata$State))\n  {\n    stop(\"invalid state\")\n  }\n  \n  out_col <- col_array[outcome]\n  st_data <- subset(originaldata, State == state, c(2,out_col))\n  \n  colnames(st_data) <- c(\"Name\", \"Score\")\n  st_data <- na.omit(st_data)\n  \n  transform(st_data, Score = as.numeric(as.character(Score)))\n  \n  attach(st_data)\n  ##st_data <- suppressWarnings(st_data[order(as.numeric(as.character(Score))),])\n  st_data <- st_data[order(Score, Name),]\n  detach(st_data)\n  if(num == \"worst\")\n  {\n    num <- nrow(st_data)\n  }\n  if(num == \"best\")\n  {\n    num <- c(1)\n  }\n  theone <- as.character(st_data[num,1])\n  return(theone)\n}",
+    "created" : 1414783706523.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3447096803",
+    "id" : "3938F529",
+    "lastKnownWriteTime" : 1414785428,
+    "path" : "~/R Working Directory Master/rprog_PA3/rankhospital.R",
+    "project_path" : "rankhospital.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : true,
+    "type" : "r_source"
+}
